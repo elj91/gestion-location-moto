@@ -1,0 +1,65 @@
+﻿<Window x:Class="projet_location.GestionMotoPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_location"
+        mc:Ignorable="d"
+        Title="Gestion d'une moto" Height="500" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- En-tête -->
+        <Border Grid.Row="0" Background="#3498DB" Padding="20">
+            <TextBlock x:Name="txtTitre" Text="Ajouter une moto" FontSize="24" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Contenu principal -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Border Background="White" CornerRadius="8" Padding="20" Margin="20" BorderBrush="#DDDDDD" BorderThickness="1">
+                <StackPanel>
+                    <!-- Modèle -->
+                    <TextBlock Text="Modèle:" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbModele" DisplayMemberPath="NomComplet" SelectedValuePath="IdModele" Padding="5" Margin="0,0,0,15"/>
+
+                    <!-- Année -->
+                    <TextBlock Text="Année:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtAnnee" Padding="5" Margin="0,0,0,15"/>
+
+                    <!-- Cylindrée -->
+                    <TextBlock Text="Cylindrée (cm³):" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtCylindree" Padding="5" Margin="0,0,0,15"/>
+
+                    <!-- Prix journalier -->
+                    <TextBlock Text="Prix journalier (€):" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtPrixJournalier" Padding="5" Margin="0,0,0,15"/>
+
+                    <!-- Immatriculation -->
+                    <TextBlock Text="Immatriculation:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtImmatriculation" Padding="5" Margin="0,0,0,15"/>
+
+                    <!-- Disponibilité -->
+                    <CheckBox x:Name="chkDisponible" Content="Disponible" IsChecked="True" Margin="0,0,0,15"/>
+
+                    <!-- Message d'erreur -->
+                    <TextBlock x:Name="txtErreur" Foreground="Red" Margin="0,10,0,10" TextWrapping="Wrap" Visibility="Collapsed"/>
+
+                    <!-- Boutons -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <Button x:Name="btnEnregistrer" Content="Enregistrer" Padding="15,8" Margin="0,0,10,0" Background="#2ECC71" Foreground="White" BorderThickness="0" Click="btnEnregistrer_Click"/>
+                        <Button x:Name="btnAnnuler" Content="Annuler" Padding="15,8" Background="#95A5A6" Foreground="White" BorderThickness="0" Click="btnAnnuler_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+
+        <!-- Pied de page -->
+        <Border Grid.Row="2" Background="#34495E" Padding="10">
+            <TextBlock Text="© 2023 MotoLocation" Foreground="White" HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

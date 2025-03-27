@@ -1,0 +1,72 @@
+﻿<Window x:Class="projet_location.ClientDashboardPage"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:projet_location"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClientDashboardPage">
+
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- En-tête -->
+        <Border Grid.Row="0" Background="#3498DB" Padding="20">
+            <Grid>
+                <TextBlock Text="MotoLocation" FontSize="28" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock x:Name="txtBienvenue" Text="Bienvenue, [Nom]" Foreground="White" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                    <Button x:Name="btnDeconnexion" Content="Déconnexion" Padding="10,5" Background="#E74C3C" Foreground="White" BorderThickness="0" Click="btnDeconnexion_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Barre de navigation -->
+        <Border Grid.Row="1" Background="#2980B9" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnListeMotos" Content="Liste des motos" Padding="15,8" Margin="5" Background="#3498DB" Foreground="White" BorderThickness="0" Click="btnListeMotos_Click" IsEnabled="False"/>
+                <Button x:Name="btnMesReservations" Content="Mes réservations" Padding="15,8" Margin="5" Background="#2980B9" Foreground="White" BorderThickness="0" Click="btnMesReservations_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Contenu principal -->
+        <Grid Grid.Row="2" Margin="20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Liste des motos disponibles" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- Liste des motos -->
+                    <ListView x:Name="lvMotos" Height="300" BorderThickness="1" BorderBrush="#DDDDDD">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Marque" DisplayMemberBinding="{Binding NomMarque}" Width="100"/>
+                                <GridViewColumn Header="Modèle" DisplayMemberBinding="{Binding NomModele}" Width="120"/>
+                                <GridViewColumn Header="Année" DisplayMemberBinding="{Binding Annee}" Width="70"/>
+                                <GridViewColumn Header="Cylindrée" DisplayMemberBinding="{Binding Cylindree}" Width="80"/>
+                                <GridViewColumn Header="Prix/jour" DisplayMemberBinding="{Binding PrixJournalier, StringFormat='{}{0:C}'}" Width="100"/>
+                                <GridViewColumn Header="Action" Width="120">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Réserver" Padding="8,3" Background="#2ECC71" Foreground="White" BorderThickness="0" Click="btnReserver_Click" Tag="{Binding IdMoto}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Pied de page -->
+        <Border Grid.Row="3" Background="#34495E" Padding="10">
+            <TextBlock Text="© 2023 MotoLocation - Application de gestion de location de motos" Foreground="White" HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

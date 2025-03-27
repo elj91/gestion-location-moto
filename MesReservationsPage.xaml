@@ -1,0 +1,69 @@
+﻿<Window x:Class="projet_location.MesReservationsPage"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_location"
+        mc:Ignorable="d"
+        Title="Mes réservations" Height="500" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- En-tête -->
+        <Border Grid.Row="0" Background="#3498DB" Padding="20">
+            <TextBlock Text="Mes réservations" FontSize="24" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Contenu principal -->
+        <Grid Grid.Row="1" Margin="20">
+            <Border Background="White" CornerRadius="8" Padding="15" BorderBrush="#DDDDDD" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Liste de mes réservations" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <ListView Grid.Row="1" x:Name="lvReservations" BorderThickness="1" BorderBrush="#DDDDDD">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdReservation}" Width="50"/>
+                                <GridViewColumn Header="Moto" DisplayMemberBinding="{Binding DetailsMoto}" Width="200"/>
+                                <GridViewColumn Header="Date début" DisplayMemberBinding="{Binding DateDebut, StringFormat=dd/MM/yyyy}" Width="100"/>
+                                <GridViewColumn Header="Date fin" DisplayMemberBinding="{Binding DateFin, StringFormat=dd/MM/yyyy}" Width="100"/>
+                                <GridViewColumn Header="Date réservation" DisplayMemberBinding="{Binding DateReservation, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
+                                <GridViewColumn Header="Prix total" DisplayMemberBinding="{Binding PrixTotal, StringFormat='{}{0:C}'}" Width="100"/>
+                                <GridViewColumn Header="État" DisplayMemberBinding="{Binding Etat}" Width="80"/>
+                                <GridViewColumn Header="Action" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Annuler" Padding="5,2" Background="#E74C3C" Foreground="White" BorderThickness="0" Click="btnAnnuler_Click" Tag="{Binding IdReservation}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Pied de page -->
+        <Border Grid.Row="2" Background="#34495E" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="© 2023 MotoLocation" Foreground="White" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" x:Name="btnFermer" Content="Fermer" Padding="15,5" Background="#3498DB" Foreground="White" BorderThickness="0" Click="btnFermer_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

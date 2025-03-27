@@ -1,0 +1,102 @@
+﻿<Window x:Class="projet_location.GestionModelePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_location"
+        mc:Ignorable="d"
+        Title="Gestion des modèles" Height="500" Width="700" WindowStartupLocation="CenterScreen">
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- En-tête -->
+        <Border Grid.Row="0" Background="#3498DB" Padding="20">
+            <TextBlock Text="Gestion des modèles" FontSize="24" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Contenu principal -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Formulaire d'ajout de modèle -->
+            <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,15" BorderBrush="#DDDDDD" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Ajouter un nouveau modèle" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="Marque:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <ComboBox Grid.Column="1" x:Name="cmbMarque" DisplayMemberPath="NomMarque" SelectedValuePath="IdMarque" Padding="5" Margin="0,0,20,0"/>
+
+                            <TextBlock Grid.Column="2" Text="Nom:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBox Grid.Column="3" x:Name="txtNomModele" Padding="5"/>
+                        </Grid>
+                        <TextBlock x:Name="txtErreur" Foreground="Red" Margin="0,10,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
+                    </StackPanel>
+
+                    <Button Grid.Column="1" x:Name="btnAjouter" Content="Ajouter" Padding="15,5" Margin="10,0,0,0" Background="#2ECC71" Foreground="White" BorderThickness="0" VerticalAlignment="Bottom" Click="btnAjouter_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Liste des modèles -->
+            <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="15" BorderBrush="#DDDDDD" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Liste des modèles" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <ListView Grid.Row="1" x:Name="lvModeles" BorderThickness="1" BorderBrush="#DDDDDD">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdModele}" Width="50"/>
+                                <GridViewColumn Header="Marque" DisplayMemberBinding="{Binding NomMarque}" Width="150"/>
+                                <GridViewColumn Header="Modèle" DisplayMemberBinding="{Binding NomModele}" Width="250"/>
+                                <GridViewColumn Header="Action" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Supprimer" Padding="5,2" Background="#E74C3C" Foreground="White" BorderThickness="0" Click="btnSupprimer_Click" Tag="{Binding IdModele}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Pied de page -->
+        <Border Grid.Row="2" Background="#34495E" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="© 2023 MotoLocation" Foreground="White" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" x:Name="btnFermer" Content="Fermer" Padding="15,5" Background="#3498DB" Foreground="White" BorderThickness="0" Click="btnFermer_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
