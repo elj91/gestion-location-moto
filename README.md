@@ -67,10 +67,11 @@ L'application utilise une base de données relationnelle avec les tables suivant
 
 
 ### Interface Client
-![Client Interface](screenshots/client-interface.png)
+![client](https://github.com/user-attachments/assets/98c8618f-a3e4-4742-979c-c81a6cd081ae)
 
 ### Système de Réservation
-![Reservation System](screenshots/reservation.png)
+![reservation](https://github.com/user-attachments/assets/304e4a94-6e59-43fa-873e-338b606f1867)
+
 
 ## 📝 Licence
 
