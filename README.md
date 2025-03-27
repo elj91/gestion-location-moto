@@ -61,7 +61,7 @@ L'application utilise une base de données relationnelle avec les tables suivant
 
 ## 📸 Captures d'écran
 
-### Dashboard Administrateur!
+### Dashboard Administrateur
 
 ![admin](https://github.com/user-attachments/assets/1b67f69e-9df8-4d19-860b-e4eea80cee75)
 
