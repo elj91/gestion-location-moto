@@ -47,7 +47,7 @@ L'application utilise une base de données relationnelle avec les tables suivant
 
 ### Instructions
 1. Clonez le dépôt: `git clone https://github.com/elj91/gestion-location-moto.git`
-2. Importez le script SQL `script.sql` pour initialiser la base de données
+2. Importez le script SQL `loc_moto.sql` pour initialiser la base de données
 3. Ouvrez le projet dans Visual Studio
 4. Configurez la connexion à la base de données dans `BDDConnection.cs`
 5. Compilez et exécutez l'application
